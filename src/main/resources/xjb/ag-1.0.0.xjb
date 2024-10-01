@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               version="2.1">
+
+    <!-- AGTOSV -->
+    <jaxb:bindings schemaLocation="../xsd/SV_Header_AGTOSV.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.ag.agtosv"/>
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:element[@name='SendungHeaderAGTOSV']">
+            <jaxb:property name="header" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']">
+            <jaxb:property name="body" />
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- SVTOAG -->
+    <jaxb:bindings schemaLocation="../xsd/SV_Header_SVTOAG.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="de.lawyno.xml.sv.ag.svtoag"/>
+        </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:element[@name='SendungsHeaderSVTOAG']">
+            <jaxb:property name="header" />
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:element[@name='Sendungs_Body']">
+            <jaxb:property name="body" />
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

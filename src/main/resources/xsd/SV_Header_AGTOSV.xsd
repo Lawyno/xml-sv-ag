@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Mit XMLSpy v2009 sp1 (http://www.altova.com) von Jennifer Slota (GKV Spitzenverband) bearbeitet -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:btst="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple"
+		   xmlns="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_AGTOSV/1.0"
+		   targetNamespace="http://www.gkv-datenaustausch.de/XMLSchema/SV_Header_AGTOSV/1.0"
+		   elementFormDefault="qualified" version="1.0.0">
+	<xs:import namespace="http://www.gkv-datenaustausch.de/Grundsaetze_Technik/XML/Basistypen_Simple" schemaLocation="Basistypen_Simple.xsd">
+		<xs:annotation>
+			<xs:documentation> Importieren der Datentypen</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:element name="AGTOSV">
+		<xs:annotation>
+			<xs:documentation>Rootelement</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SendungHeaderAGTOSV">
+					<xs:annotation>
+						<xs:documentation>In diesem Element werden notwendige Steuerungsinformationen uebermittelt, welche in der DEUEV im VOSZ, NCSZ und  DSKO uebertragen werden.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Vorlaufsatz">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Verfahrensmerkmal" type="btst:Verfahrensmerkmal_Typ">
+											<xs:annotation>
+												<xs:documentation>Es sind folgende Verfahrensmerkmale zulaessig:
+A1 = A1A</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Absendernummer" type="btst:Absendernummer_Typ">
+											<xs:annotation>
+												<xs:documentation>Absendernummer der sendenden Stelle.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Empfaengernummer" type="btst:Absendernummer_Typ">
+											<xs:annotation>
+												<xs:documentation>Absendernummer der annehmenden Datenannahmestelle.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Datum_Erstellung" type="btst:Datum_Zeit_Typ"/>
+										<xs:element name="Dateifolgenummer" type="btst:Dateifolgenummer_Typ"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Kommunikationsdaten">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Prod_ID" type="btst:Prod_ID_Typ"/>
+										<xs:element name="Mod_ID" type="btst:Mod_ID_Typ"/>
+										<xs:element name="Name_Dateiersteller" type="btst:Name_Typ"/>
+										<xs:element name="Name_Dateiersteller_2" type="btst:Name_Typ" minOccurs="0"/>
+										<xs:element name="Name_Dateiersteller_3" type="btst:Name_Typ" minOccurs="0"/>
+										<xs:element name="PLZ_Betrieb" type="btst:Postleitzahl_Typ"/>
+										<xs:element name="Ort_Betrieb" type="btst:Ort_Typ"/>
+										<xs:element name="Strasse_Betrieb" type="btst:Strasse_Typ" minOccurs="0"/>
+										<xs:element name="Hausnummer_Betrieb" type="btst:Hausnummer_Typ" minOccurs="0"/>
+										<xs:element name="Anrede_Ansprechpartner" type="btst:Kennzeichen_MWX_Typ"/>
+										<xs:element name="Name_Ansprechpartner" type="btst:Name_Typ"/>
+										<xs:element name="Telefonnummer_Ansprechpartner" type="btst:Rufnummer_Typ"/>
+										<xs:element name="Faxnummer_Ansprechpartner" type="btst:Rufnummer_Typ" minOccurs="0"/>
+										<xs:element name="EMail_Ansprechpartner" type="btst:Email_Typ"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+							<xs:annotation>
+								<xs:documentation>Es ist nur der Wert 1.0.0 zulaessig</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Sendungs_Body">
+					<xs:complexType>
+						<xs:choice>
+							<xs:any />
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Versionsnummer" type="btst:Versionsnummer_Typ" use="required">
+				<xs:annotation>
+					<xs:documentation>Es ist nur der Wert 1.0.0 zulaessig</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
